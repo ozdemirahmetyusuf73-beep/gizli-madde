@@ -54,6 +54,15 @@ Sunucu olmadan da çalışır — kullanıcı kendi anahtarını girer (yedek mo
 
 ## Render'a Yayınlama (5 adım)
 
+### ⚡ Tek tıkla deploy
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/ozdemirahmetyusuf73-beep/gizli-madde)
+
+Butona bas → GitHub'ı onayla → `OPENROUTER_API_KEY` gir → **Create**. 2-3 dakika sonra `https://gizli-madde.onrender.com` hazır.
+
+<details>
+<summary>Manuel adımlar</summary>
+
 Render'ın ücretsiz planı **ticari kullanıma açıktır** (Vercel Hobby'nin "kişisel kullanım" kısıtı yok) ve gerçek bir sunucu çalıştırdığı için 30sn'lik analizde timeout olmaz.
 
 1. **GitHub deposu:** `gizli-madde` (bu klasör `git init` ile hazırlandı, ilk commit atıldı)
@@ -65,6 +74,8 @@ Render'ın ücretsiz planı **ticari kullanıma açıktır** (Vercel Hobby'nin "
    - Environment Variables → `OPENROUTER_API_KEY` = `sk-or-v1-...`
    - (isteğe bağlı) `FAST_MODEL` = `poolside/laguna-s-2.1:free`
 5. **Deploy** → birkaç dakika → `https://gizli-madde.onrender.com`
+
+</details>
 
 > ⚠️ **Ücretsiz plan uykuya girer** (15 dk hareketsizlik sonrası). İlk istek ~30-60 sn sürebilir — "Servis uyanıyor" mesajı gösterilebilir.
 > 🔁 Her `git push` otomatik deploy tetikler (`autoDeploy: true`).
