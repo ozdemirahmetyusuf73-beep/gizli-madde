@@ -202,11 +202,25 @@ http.createServer(async (req, res) => {
   }
 
   /* --- Statik dosya --- */
-  const file = req.url === "/" ? "/index.html" : req.url;
+  const file = req.url === "/" ? "/index.html" : req.url.split("?")[0];
   const fp = path.join(__dirname, path.normalize(file).replace(/^(\.\.[\/\\])+/, ""));
+  const MIME = {
+    ".html":"text/html; charset=utf-8", ".js":"text/javascript; charset=utf-8",
+    ".css":"text/css; charset=utf-8", ".json":"application/json; charset=utf-8",
+    ".jpg":"image/jpeg", ".jpeg":"image/jpeg", ".png":"image/png", ".gif":"image/gif",
+    ".svg":"image/svg+xml", ".ico":"image/x-icon", ".webp":"image/webp",
+    ".txt":"text/plain; charset=utf-8", ".xml":"application/xml; charset=utf-8",
+    ".webmanifest":"application/manifest+json", ".pdf":"application/pdf"
+  };
   fs.readFile(fp, (err, data) => {
-    if (err) { res.writeHead(404); return res.end("Bulunamadı"); }
-    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+    if (err) { res.writeHead(404, { "Content-Type":"text/plain; charset=utf-8" }); return res.end("Bulunamadı"); }
+    const ext = path.extname(fp).toLowerCase();
+    const type = MIME[ext] || "application/octet-stream";
+    // index.html her zaman taze; statik varlıklar uzun süre cache'lenir
+    const cache = (ext === ".html" || ext === ".json")
+      ? "no-cache, no-store, must-revalidate"
+      : "public, max-age=604800";
+    res.writeHead(200, { "Content-Type": type, "Cache-Control": cache });
     res.end(data);
   });
 }).listen(PORT, () => {

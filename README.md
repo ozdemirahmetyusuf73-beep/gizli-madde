@@ -80,6 +80,13 @@ Render'ın ücretsiz planı **ticari kullanıma açıktır** (Vercel Hobby'nin "
 > ⚠️ **Ücretsiz plan uykuya girer** (15 dk hareketsizlik sonrası). İlk istek ~30-60 sn sürebilir — "Servis uyanıyor" mesajı gösterilebilir.
 > 🔁 Her `git push` otomatik deploy tetikler (`autoDeploy: true`).
 
+> 🔗 **Özel alan adı alırsan** (örn. `gizlimadde.com`): `index.html` içindeki `og:url`, `og:image`, `twitter:image` ve `canonical` satırlarını, ayrıca `robots.txt` ile `sitemap.xml` içindeki adresi yeni domaine çevir. Aksi halde WhatsApp/Telegram önizlemeleri eski adresi gösterir.
+
+## Paylaşım görseli
+
+`og.jpg` (1200×630) — WhatsApp, Telegram, X ve Instagram önizlemelerinde görünen marka kartı.
+Değiştirmek istersen aynı boyutta (1200×630) yeni bir görsel koy, `og.jpg` adıyla kaydet.
+
 ## Faydalı Bağlantılar
 
 - OpenRouter anahtarı: https://openrouter.ai/keys
