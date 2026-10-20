@@ -1,0 +1,13 @@
+{
+  "name": "gizli-madde",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gizli Madde — Sözleşmendeki tehlikeli maddeleri 30 saniyede bulur.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,24 @@
+# Render Blueprint — Gizli Madde
+# Kullanım: Render Dashboard > Blueprints > New Blueprint Instance > bu repo'yu seç
+services:
+  - type: web
+    name: gizli-madde
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: ""
+    startCommand: npm start
+    healthCheckPath: /api/status
+    autoDeploy: true
+    envVars:
+      # Dashboard'dan kendin gir (sync: false = değer panelde doldurulur)
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: NODE_VERSION
+        value: "24"
+      # İsteğe bağlı yedek sağlayıcı
+      - key: OPENAI_API_KEY
+        sync: false
+      # Hızlı model (ücretsiz varsayılan)
+      - key: FAST_MODEL
+        value: poolside/laguna-s-2.1:free

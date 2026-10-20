@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gizli Madde</title>
+<meta name="description" content="Gizli Madde — Sözleşmeni 30 saniyede tarar; cüzdanından para çalacak gizli maddeleri orijinal metninde kırmızı işaretler. Ücretsiz, kayıt yok.">
+<meta property="og:title" content="Gizli Madde — Sözleşmendeki gizli tehlikeli maddeleri bul">
+<meta property="og:description" content="İmzalamadan önce 30 saniyede ücretsiz risk raporu: gizli zam, depozito tuzağı, otomatik yenileme...">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0b0d12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23ff6b7a'/%3E%3Cstop offset='1' stop-color='%23c8102e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M32 3 L56 12 V31 C56 46 45 56 32 61 C19 56 8 46 8 31 V12 Z' fill='url(%23g)'/%3E%3Cpath d='M20 12 H37 L45 20 V49 C45 51.2 43.2 53 41 53 H20 C17.8 53 16 51.2 16 49 V15 C16 12.8 17.8 11 20 11 Z' fill='%23fff'/%3E%3Cpath d='M37 12 L45 20 H39 C37.9 20 37 19.1 37 18 Z' fill='%23b9c2d4'/%3E%3Crect x='21' y='26' width='19' height='2.6' rx='1.3' fill='%238a93a8'/%3E%3Crect x='21' y='38.5' width='19' height='6' rx='3' fill='%23ff4d5e'/%3E%3C/svg%3E">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --bg:#0b0d12; --card:#131722; --card2:#1a1f2e; --line:#252b3b;
+    --txt:#e8ecf5; --mut:#8a93a8; --red:#ff4d5e; --amb:#ffb020; --grn:#22d47f;
+    --accent:#ff4d5e;
+  }
+  body {
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--txt); min-height:100vh; padding:24px;
+  }
+  .wrap { max-width:1100px; margin:0 auto; }
+
+  header { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; flex-wrap:wrap; gap:12px; }
+  .brand { display:flex; align-items:center; gap:12px; }
+  .brand .logo {
+    width:52px; height:52px; border-radius:14px;
+    background:radial-gradient(circle at 30% 25%, rgba(255,77,94,.18), rgba(255,77,94,.04));
+    border:1px solid rgba(255,77,94,.28);
+    display:grid; place-items:center;
+    box-shadow:0 8px 24px rgba(255,77,94,.22);
+    flex-shrink:0;
+  }
+  .brand .logo svg { display:block; animation:kmFloat 5s ease-in-out infinite; }
+  @keyframes kmFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+  .brand h1 { font-size:20px; font-weight:800; letter-spacing:-.5px; }
+  .brand p { font-size:12px; color:var(--mut); margin-top:2px; }
+  .keybtn {
+    background:var(--card2); border:1px solid var(--line); color:var(--mut);
+    padding:9px 14px; border-radius:10px; font-size:12px; cursor:pointer;
+  }
+  .keybtn:hover { color:var(--txt); border-color:#3a4256; }
+
+  .hero { text-align:center; margin:30px 0 34px; }
+  .hero h2 { font-size:38px; font-weight:900; letter-spacing:-1.5px; line-height:1.1; }
+  .hero h2 .hit { color:var(--red); }
+  .hero p { color:var(--mut); margin-top:14px; font-size:15px; max-width:560px; margin-left:auto; margin-right:auto; }
+
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  @media(max-width:820px){ .grid{grid-template-columns:1fr;} .hero h2{font-size:28px;} }
+
+  .drop {
+    background:var(--card); border:2px dashed var(--line); border-radius:18px;
+    padding:40px 24px; text-align:center; cursor:pointer; transition:.2s;
+  }
+  .drop:hover, .drop.over { border-color:var(--red); background:#171b28; }
+  .drop .ic { font-size:40px; }
+  .drop h3 { font-size:17px; margin:14px 0 8px; }
+  .drop p { font-size:13px; color:var(--mut); line-height:1.6; }
+  .drop .btns { display:flex; gap:10px; justify-content:center; margin-top:18px; flex-wrap:wrap; }
+
+  .btn {
+    border:none; border-radius:10px; padding:11px 18px; font-size:13px; font-weight:600;
+    cursor:pointer; transition:.15s; font-family:inherit;
+  }
+  .btn.red { background:var(--red); color:#fff; }
+  .btn.red:hover { background:#ff6b79; }
+  .btn.red:disabled { background:#3a2a30; color:#7a6a70; cursor:not-allowed; }
+  .btn.ghost { background:transparent; border:1px solid var(--line); color:var(--mut); }
+  .btn.ghost:hover { color:var(--txt); border-color:#3a4256; }
+
+  textarea#raw {
+    width:100%; min-height:220px; background:var(--card2); border:1px solid var(--line);
+    border-radius:12px; color:var(--txt); padding:14px; font-size:13px; line-height:1.6;
+    resize:vertical; font-family:inherit; margin-top:14px;
+  }
+  textarea#raw:focus { outline:none; border-color:var(--red); }
+
+  .panel {
+    background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:22px; min-height:340px;
+  }
+  .panel h3 { font-size:15px; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+
+  .empty { color:var(--mut); font-size:13px; text-align:center; padding:60px 20px; line-height:1.8; }
+  .empty .big { font-size:36px; display:block; margin-bottom:12px; opacity:.4; }
+
+  .score { display:flex; align-items:center; gap:16px; margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid var(--line); }
+  .ring {
+    width:76px; height:76px; border-radius:50%; display:grid; place-items:center;
+    font-size:22px; font-weight:900; flex-shrink:0;
+  }
+  .score .meta h4 { font-size:14px; margin-bottom:5px; }
+  .score .meta p { font-size:12px; color:var(--mut); line-height:1.6; }
+
+  .clause {
+    background:var(--card2); border-left:3px solid var(--line); border-radius:0 10px 10px 0;
+    padding:13px 15px; margin-bottom:11px;
+  }
+  .clause.high { border-left-color:var(--red); }
+  .clause.mid  { border-left-color:var(--amb); }
+  .clause.low  { border-left-color:var(--grn); }
+  .clause .top { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:8px; }
+  .clause .name { font-size:13px; font-weight:700; }
+  .tag { font-size:10px; font-weight:700; padding:3px 8px; border-radius:20px; letter-spacing:.3px; flex-shrink:0; }
+  .tag.high { background:rgba(255,77,94,.15); color:var(--red); }
+  .tag.mid  { background:rgba(255,176,32,.15); color:var(--amb); }
+  .tag.low  { background:rgba(34,212,127,.15); color:var(--grn); }
+  .clause .quote { font-size:12px; color:var(--mut); font-style:italic; padding:8px 10px; background:#0f1219; border-radius:7px; margin-bottom:9px; line-height:1.6; }
+  .clause .exp { font-size:12.5px; line-height:1.65; margin-bottom:8px; }
+  .clause .fix { font-size:12px; color:var(--grn); line-height:1.6; }
+  .clause .fix b { color:#5ce8a5; }
+
+  .sumbox { background:#1c1016; border:1px solid #3a2028; border-radius:12px; padding:14px; margin-top:16px; }
+  .sumbox h4 { font-size:13px; color:var(--red); margin-bottom:9px; }
+  .sumbox p { font-size:12.5px; line-height:1.7; color:#d4b8bd; }
+
+  .spin { display:inline-block; width:14px; height:14px; border:2px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:sp .7s linear infinite; }
+  @keyframes sp{to{transform:rotate(360deg);}}
+
+  .modal { position:fixed; inset:0; background:rgba(0,0,0,.7); display:none; place-items:center; z-index:50; padding:20px; }
+  .modal.on { display:grid; }
+  .modal .box { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px; max-width:480px; width:100%; }
+  .modal h3 { font-size:16px; margin-bottom:8px; }
+  .modal p { font-size:12.5px; color:var(--mut); margin-bottom:16px; line-height:1.6; }
+  .modal input, .modal select {
+    width:100%; background:var(--card2); border:1px solid var(--line); border-radius:9px;
+    color:var(--txt); padding:11px; font-size:13px; margin-bottom:12px; font-family:inherit;
+  }
+  .modal input:focus, .modal select:focus { outline:none; border-color:var(--red); }
+
+  .toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(80px); background:#1c1016; border:1px solid #3a2028; color:#ffb3bb; padding:12px 20px; border-radius:10px; font-size:13px; transition:.3s; z-index:60; }
+  .toast.on { transform:translateX(-50%) translateY(0); }
+
+  .shbtn { border:none; border-radius:9px; padding:10px 4px; font-size:11px; font-weight:700; color:#fff; cursor:pointer; font-family:inherit; transition:.15s; }
+  .shbtn:hover { transform:translateY(-2px); filter:brightness(1.12); }
+  .shbtn:active { transform:translateY(0); }
+
+  /* --- FİYATLANDIRMA --- */
+  .pcard {
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    padding:26px 22px; display:flex; flex-direction:column; position:relative; transition:.2s;
+  }
+  .pcard:hover { transform:translateY(-4px); border-color:#3a4256; }
+  .pcard.hot { border-color:var(--red); box-shadow:0 12px 40px rgba(255,77,94,.18); transform:scale(1.03); }
+  .pcard.hot:hover { transform:scale(1.03) translateY(-4px); }
+  .pbadge {
+    position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+    background:var(--red); color:#fff; font-size:10px; font-weight:800;
+    padding:5px 14px; border-radius:20px; letter-spacing:.5px;
+  }
+  .ptier { font-size:13px; font-weight:700; color:var(--mut); text-transform:uppercase; letter-spacing:1px; }
+  .pprice { font-size:38px; font-weight:900; margin:8px 0 4px; letter-spacing:-1.5px; }
+  .pprice span { font-size:15px; font-weight:500; color:var(--mut); }
+  .pdesc { font-size:12.5px; color:var(--mut); margin-bottom:20px; }
+  .plist { list-style:none; margin-bottom:22px; }
+  .plist li { font-size:13px; padding:7px 0; border-bottom:1px solid #1c2130; }
+  .plist li.off { color:#4a5165; }
+
+  /* --- Fiyat ızgarası (4 kart) --- */
+  .pgrid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; align-items:stretch; }
+  @media(max-width:1080px){ .pgrid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:560px){ .pgrid{ grid-template-columns:1fr; } }
+
+  /* --- Kullandıkça Öde kartı --- */
+  .pcard.credit { border-color:#2c5f47; }
+  .pcard.credit:hover { border-color:#3f8f68; }
+  .pcard.credit .pprice { color:var(--grn); }
+  .pcard.credit .ptier { color:var(--grn); }
+
+  /* --- Kredi paketleri --- */
+  .cpack {
+    background:var(--card2); border:1px solid var(--line); border-radius:12px;
+    padding:14px 8px; cursor:pointer; font-family:inherit; color:var(--txt);
+    display:flex; flex-direction:column; align-items:center; gap:4px; transition:.15s;
+  }
+  .cpack:hover { border-color:var(--grn); background:#15241d; transform:translateY(-2px); }
+  .cpack b { font-size:12.5px; }
+  .cpack span { font-size:18px; font-weight:900; color:var(--grn); letter-spacing:-.5px; }
+  .cpack i { font-style:normal; font-size:10px; color:var(--mut); }
+
+  .credchip {
+    font-size:11px; font-weight:700; color:var(--grn);
+    background:rgba(34,212,127,.12); border:1px solid rgba(34,212,127,.32);
+    padding:5px 11px; border-radius:20px; display:flex; align-items:center; gap:5px;
+  }
+
+  /* --- SSS --- */
+  .faq {
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:16px 18px; margin-bottom:10px; cursor:pointer;
+  }
+  .faq summary { font-size:14px; font-weight:600; list-style:none; }
+  .faq summary::-webkit-details-marker { display:none; }
+  .faq summary::after { content:'+'; float:right; color:var(--red); font-size:18px; }
+  .faq[open] summary::after { content:'−'; }
+  .faq div { font-size:13px; color:var(--mut); line-height:1.7; margin-top:12px; }
+
+  /* --- GÜVEN BÖLÜMÜ --- */
+  .trust-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  @media(max-width:820px){ .trust-grid{grid-template-columns:repeat(2,1fr);} }
+  .trust-card {
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:20px 16px; text-align:center; transition:.2s;
+  }
+  .trust-card:hover { border-color:#3a4256; transform:translateY(-3px); }
+  .trust-card .ic { font-size:30px; display:block; margin-bottom:10px; }
+  .trust-card h4 { font-size:13.5px; margin-bottom:7px; }
+  .trust-card p { font-size:12px; color:var(--mut); line-height:1.6; }
+
+  .badge-sec {
+    display:inline-flex; align-items:center; gap:7px;
+    background:rgba(34,212,127,.1); border:1px solid rgba(34,212,127,.3);
+    color:var(--grn); font-size:11.5px; font-weight:600;
+    padding:7px 14px; border-radius:30px;
+  }
+
+  /* --- SÖZLEŞME HARİTASI (vurgulu metin) --- */
+  .doc {
+    background:#0f1219; border:1px solid var(--line); border-radius:14px;
+    padding:20px; font-size:13.5px; line-height:2; white-space:pre-wrap;
+    max-height:420px; overflow-y:auto; font-family:inherit;
+  }
+  .doc mark {
+    background:rgba(255,77,94,.22); color:#ff9aa4; border-left:3px solid var(--red);
+    padding:2px 4px; border-radius:3px; font-weight:600; cursor:pointer;
+    animation:markPulse 2.4s ease-in-out infinite;
+  }
+  .doc mark.mid { background:rgba(255,176,32,.18); color:#ffd18a; border-left-color:var(--amb); }
+  .doc mark:hover { filter:brightness(1.3); }
+  @keyframes markPulse { 0%,100%{opacity:1} 50%{opacity:.72} }
+  .doc .legend { display:flex; gap:16px; font-size:11px; color:var(--mut); margin-bottom:14px; }
+  .doc .legend b { display:inline-block; width:11px; height:11px; border-radius:3px; vertical-align:-1px; margin-right:5px; }
+
+  /* --- EŞLEŞME DOĞRULAMA ROZETİ --- */
+  .verify-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+  .verify-chip {
+    font-size:11.5px; padding:6px 12px; border-radius:20px;
+    background:var(--card2); border:1px solid var(--line); color:var(--mut);
+  }
+  .verify-chip.ok { border-color:rgba(34,212,127,.4); color:var(--grn); }
+  .verify-chip.warn { border-color:rgba(255,176,32,.4); color:var(--amb); }
+
+  /* --- KARŞILAŞTIRMA / ÖNCE-SONRA (viral) --- */
+  .vs-wrap { display:grid; grid-template-columns:1fr auto 1fr; gap:14px; align-items:center; margin-top:16px; }
+  .vs-side { background:var(--card2); border:1px solid var(--line); border-radius:14px; padding:16px; text-align:center; }
+  .vs-side .num { font-size:34px; font-weight:900; letter-spacing:-1px; }
+  .vs-side .lbl { font-size:11.5px; color:var(--mut); margin-top:5px; }
+  .vs-mid { font-size:24px; }
+
+  /* --- İMZA KONTROL LİSTESİ (viral) --- */
+  .check-item {
+    display:flex; gap:11px; align-items:flex-start;
+    background:var(--card2); border:1px solid var(--line);
+    border-radius:11px; padding:12px 14px; margin-bottom:9px; cursor:pointer; transition:.15s;
+  }
+  .check-item:hover { border-color:#3a4256; }
+  .check-item .bx {
+    width:20px; height:20px; border-radius:6px; border:2px solid var(--line);
+    flex-shrink:0; display:grid; place-items:center; font-size:12px; color:transparent; transition:.15s;
+  }
+  .check-item.done .bx { background:var(--grn); border-color:var(--grn); color:#fff; }
+  .check-item.done .ct { text-decoration:line-through; color:var(--mut); }
+  .check-item .ct { font-size:13px; line-height:1.55; }
+
+  /* --- SONUÇ İSTATİSTİK ŞERİDİ --- */
+  .stat-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:16px; }
+  @media(max-width:640px){ .stat-strip{grid-template-columns:repeat(2,1fr);} }
+  .stat-box { background:var(--card2); border:1px solid var(--line); border-radius:12px; padding:13px; text-align:center; }
+  .stat-box .v { font-size:22px; font-weight:900; letter-spacing:-.5px; }
+  .stat-box .k { font-size:10.5px; color:var(--mut); margin-top:3px; }
+
+  /* --- YAZDIRMA / PDF --- */
+  @media print {
+    header .keybtn, #modedot, .hero, .drop, #raw, #analyze, #clear, #sharebar,
+    #pricing, .faq, #quotaBar, #upBtn, .toast, .modal, #keybtn,
+    #guven, #sss, #checklist, .empty, .map-hint { display:none !important; }
+    body { background:#fff !important; color:#111 !important; padding:0; }
+    .wrap { max-width:100%; }
+    .panel, .trust-card, .stat-box, .check-item { background:#fff !important; border-color:#ddd !important; color:#111 !important; }
+    .doc { max-height:none; background:#fff; border-color:#ddd; color:#111; }
+    .clause .quote { background:#f5f5f5; color:#444; }
+    .clause .exp, .clause .name, .sumbox p { color:#111 !important; }
+    .sumbox { background:#fff3f4 !important; border-color:#ffb3bb !important; }
+    .grid { grid-template-columns:1fr !important; }
+    h1, h2, h3, h4, .score .meta p { color:#111 !important; }
+    .print-foot { display:block !important; }
+  }
+  .print-foot { display:none; margin-top:22px; font-size:11px; color:var(--mut); text-align:center; border-top:1px dashed var(--line); padding-top:12px; }
+
+  /* --- Harita → madde atlama vurgusu --- */
+  .clause { scroll-margin-top:18px; transition:box-shadow .25s ease; }
+  .clause.flash { box-shadow:0 0 0 2px var(--red), 0 0 26px rgba(255,77,94,.45); }
+  .doc mark.low { background:rgba(34,212,127,.14); color:#7ceebb; border-left-color:var(--grn); }
+  .doc mark::after { content:' 🔎'; font-size:.8em; opacity:.85; }
+
+  /* --- Geçmiş kartları --- */
+  .hcard { cursor:pointer; transition:.15s; }
+  .hcard:hover { border-color:#3a4256 !important; transform:translateY(-2px); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand">
+      <div class="logo" title="Gizli Madde">
+        <svg width="46" height="46" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Gizli Madde logosu">
+          <defs>
+            <linearGradient id="kmBg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ff6b7a"/><stop offset="1" stop-color="#c8102e"/>
+            </linearGradient>
+            <linearGradient id="kmPaper" x1="18" y1="10" x2="46" y2="54" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ffffff"/><stop offset="1" stop-color="#dfe5f0"/>
+            </linearGradient>
+            <filter id="kmShadow" x="-40%" y="-40%" width="180%" height="180%">
+              <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#000" flood-opacity="0.35"/>
+            </filter>
+          </defs>
+          <!-- Arka plan kalkan (güven) -->
+          <path d="M32 3 L56 12 V31 C56 46 45 56 32 61 C19 56 8 46 8 31 V12 Z"
+                fill="url(#kmBg)" opacity="0.16" stroke="url(#kmBg)" stroke-width="1.6"/>
+          <!-- Belge -->
+          <g filter="url(#kmShadow)">
+            <path d="M20 12 H37 L45 20 V49 C45 51.2 43.2 53 41 53 H20 C17.8 53 16 51.2 16 49 V15 C16 12.8 17.8 11 20 11 Z"
+                  transform="translate(0,0.5)" fill="url(#kmPaper)"/>
+            <path d="M37 12 L45 20 H39 C37.9 20 37 19.1 37 18 Z" fill="#b9c2d4"/>
+          </g>
+          <!-- Normal satırlar -->
+          <rect x="21" y="26" width="19" height="2.6" rx="1.3" fill="#8a93a8"/>
+          <rect x="21" y="32" width="14" height="2.6" rx="1.3" fill="#8a93a8"/>
+          <!-- KIRMIZI MADDE (işaretli satır) -->
+          <rect x="21" y="38.5" width="19" height="6" rx="3" fill="#ff4d5e"/>
+          <rect x="21" y="47" width="10" height="2.6" rx="1.3" fill="#8a93a8"/>
+          <!-- Büyüteç (analiz) -->
+          <circle cx="43" cy="43" r="9" fill="#0b0d12" fill-opacity="0.0"/>
+          <circle cx="43" cy="43" r="8.5" stroke="#ff4d5e" stroke-width="3" fill="#0b0d12" fill-opacity="0.75"/>
+          <line x1="49.5" y1="49.5" x2="56" y2="56" stroke="#ff4d5e" stroke-width="4" stroke-linecap="round"/>
+          <path d="M39.5 43 L42 45.5 L46.5 40.5" stroke="#22d47f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <h1>Gizli Madde</h1>
+        <p>İmzalamadan önce gizli maddeleri gör.</p>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span id="modedot" style="font-size:11px;color:var(--grn);display:flex;align-items:center;gap:6px;">
+        <span style="width:7px;height:7px;border-radius:50%;background:var(--grn);"></span> Yapay zeka hazır
+      </span>
+      <span id="credChip" class="credchip" style="display:none;">🎟️ <b>0</b> kredi</span>
+      <button class="keybtn" id="keybtn" style="display:none;">⚙️ AI Ayarları</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h2>İmzaladığın her madde<br><span class="hit">cüzdanından para çalabilir.</span></h2>
+    <p>Sözleşmeni yükle. Hangi satır seni zarara uğratır, gizli zam nerede saklı, hangi maddeyi müzakere edersen ne kazanırsın — hepsini kırmızı gösteriyoruz.</p>
+  </div>
+
+  <div class="grid">
+    <!-- SOL: YÜKLEME -->
+    <div>
+      <div class="drop" id="drop">
+        <div class="ic">📄</div>
+        <h3>Sözleşmeni buraya bırak</h3>
+        <p>PDF, Word (.docx) ya da .txt yükle.<br>Ya da telefonla <b>fotoğraf çek</b> — yapay zeka metne çevirir.</p>
+        <div class="btns">
+          <button class="btn red" id="pick">📎 Dosya Seç</button>
+          <button class="btn ghost" id="photo">📷 Fotoğraf / Görsel</button>
+          <button class="btn ghost" id="sample">Örnek Kira Sözleşmesi</button>
+        </div>
+        <input type="file" id="file" accept=".txt,.text,.pdf,.docx,.doc" hidden>
+        <input type="file" id="imgfile" accept="image/*" capture="environment" hidden>
+        <div id="ocrStatus" style="display:none; margin-top:14px; font-size:12.5px; color:var(--amb);"></div>
+      </div>
+      <textarea id="raw" placeholder="...veya sözleşmenin metnini buraya yapıştır."></textarea>
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="btn red" id="analyze" style="flex:1;">🔍 Sözleşmeyi Tara</button>
+        <button class="btn ghost" id="clear">Temizle</button>
+      </div>
+    </div>
+
+    <!-- SAĞ: SONUÇ -->
+    <div class="panel" id="result">
+      <h3>⚠️ Tehlike Raporu</h3>
+      <div class="empty" id="empty">
+        <span class="big">🕵️</span>
+        Henüz sözleşme analiz edilmedi.<br>
+        Bir sözleşme yükleyin — 30 saniyede<br>gizli tehlikeleri işaretleyeceğiz.
+      </div>
+      <div id="out" style="display:none;"></div>
+
+      <!-- PAYLAŞIM BARI -->
+      <div id="sharebar" style="display:none; margin-top:22px; padding-top:20px; border-top:1px dashed var(--line);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div style="font-size:14px; font-weight:700;">👥 Arkadaşına Göster</div>
+            <div style="font-size:11.5px; color:var(--mut); margin-top:3px;">Arkadaşının hangi maddede para kaybedeceğini görsün.</div>
+          </div>
+          <button class="btn red" id="invite" style="font-size:12px; padding:9px 14px;">🔗 Davet Linkini Kopyala</button>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:8px;">
+          <button class="shbtn" id="sWp" style="background:#25D366;">WhatsApp</button>
+          <button class="shbtn" id="sIg" style="background:linear-gradient(45deg,#f09433,#dc2743,#bc1888);">Instagram</button>
+          <button class="shbtn" id="sX" style="background:#111; border:1px solid #333;">X</button>
+          <button class="shbtn" id="sTg" style="background:#29A9EA;">Telegram</button>
+          <button class="shbtn" id="sCard" style="background:#2a3143;">🎴 Kart İndir</button>
+        </div>
+
+        <div style="font-size:10.5px; color:var(--mut); margin-top:10px; line-height:1.6;">
+          Instagram: kart otomatik iner → Story'ye ekle, üstüne "Ben denedim, 3 madde çıktı" yaz.
+        </div>
+      </div>
+
+      <!-- DAVET UYARISI -->
+      <div id="refNotice" style="display:none; background:#1c1016; border:1px solid #3a2028; border-radius:12px; padding:12px; margin-top:14px; font-size:12.5px; color:#ffb3bb;">
+        🎁 <b id="refName">Bir arkadaşın</b> seni davet etti. İlk analizin ücretsiz.
+      </div>
+    </div>
+  </div>
+
+  <!-- 🗺️ SÖZLEŞME HARİTASI (orijinal metin + tıklanabilir vurgu) -->
+  <section id="mapSec" style="display:none; margin-top:34px;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:12px; flex-wrap:wrap; margin-bottom:14px;">
+      <div class="map-hint">
+        <h3 style="font-size:18px; font-weight:800;">🗺️ Sözleşme Haritası</h3>
+        <p style="font-size:12.5px; color:var(--mut); margin-top:5px;">Sözleşmenin KENDİ metni. İşaretli maddelere tıkla → açıklamasına atlar.</p>
+      </div>
+      <button class="btn ghost" id="printBtn" style="font-size:12px; padding:9px 16px;">⬇️ PDF / Yazdır</button>
+    </div>
+
+    <div class="verify-row" id="verifyRow"></div>
+
+    <div class="legend" id="mapLegend" style="display:flex; gap:16px; font-size:11.5px; color:var(--mut); margin:14px 0 10px; flex-wrap:wrap;">
+      <span><b style="display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--red);vertical-align:-1px;margin-right:5px;"></b>Yüksek risk</span>
+      <span><b style="display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--amb);vertical-align:-1px;margin-right:5px;"></b>Orta risk</span>
+      <span><b style="display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--grn);vertical-align:-1px;margin-right:5px;"></b>Düşük risk</span>
+      <span style="margin-left:auto;">🔎 = işaretli maddeye tıkla</span>
+    </div>
+
+    <div class="doc" id="docView"></div>
+    <div class="print-foot" id="printFoot"></div>
+  </section>
+
+  <!-- 📚 ANALİZ GEÇMİŞİ (Pro) -->
+  <section id="histSec" style="display:none; margin-top:34px;">
+    <h3 style="font-size:17px; font-weight:800; margin-bottom:6px;">📚 Analiz Geçmişin</h3>
+    <p style="font-size:12.5px; color:var(--mut); margin-bottom:14px;">Daha önce taradığın sözleşmeler — birine tıkla, tekrar gör.</p>
+    <div id="histLocked" style="display:none; text-align:center; padding:28px; border:1px dashed var(--line); border-radius:14px; background:var(--card2);">
+      <div style="font-size:34px; margin-bottom:8px;">🔒</div>
+      <p style="font-size:13px; color:var(--mut); margin-bottom:14px;">Geçmiş kaydı <b>Pro'ya ait</b>. Sözleşmelerini tek tek gör, risk puanlarını karşılaştır.</p>
+      <button class="btn red" id="histPro" style="padding:10px 18px; font-size:13px;">Pro'ya Geç — 99₺/ay</button>
+    </div>
+    <div id="histList" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px;"></div>
+  </section>
+
+  <!-- ÜCRETSİZ HAK GÖSTERGESİ -->
+  <div id="quotaBar" style="margin-top:16px; display:flex; align-items:center; gap:10px; font-size:12px; color:var(--mut);">
+    <div style="flex:1; height:6px; background:#252b3b; border-radius:20px; overflow:hidden;">
+      <div id="quotaFill" style="height:100%; width:0%; background:var(--grn); border-radius:20px; transition:.3s;"></div>
+    </div>
+    <span id="quotaTxt">Bu ay <b>3</b> ücretsiz analizin var</span>
+    <button id="upBtn" style="background:none;border:none;color:var(--red);font-weight:700;font-size:12px;cursor:pointer;font-family:inherit;">Sınırsız →</button>
+  </div>
+
+  <!-- FİYATLANDIRMA -->
+  <section id="pricing" style="margin-top:64px;">
+    <div style="text-align:center; margin-bottom:34px;">
+      <h2 style="font-size:30px; font-weight:900; letter-spacing:-1px;">İmzalamadan önce <span style="color:var(--red)">bir kez</span> dene.<br>Yanlış imza bir yıllık kirandan pahalı.</h2>
+      <p style="color:var(--mut); margin-top:12px; font-size:14px;">İlk 3 analiz tamamen ücretsiz. <b>Taahhüt yok</b> — istediğin an kredi al, istediğin an çık.</p>
+    </div>
+
+    <div class="pgrid">
+      <!-- ÜCRETSİZ -->
+      <div class="pcard">
+        <div class="ptier">Ücretsiz</div>
+        <div class="pprice">0₺<span>/ay</span></div>
+        <p class="pdesc">Denemek isteyenler için</p>
+        <ul class="plist">
+          <li>✅ Ayda 3 sözleşme analizi</li>
+          <li>✅ Tehlike raporu + risk puanı</li>
+          <li>✅ Müzakere taktikleri</li>
+          <li>✅ Paylaşım kartı</li>
+          <li>✅ PDF + fotoğraf yükleme</li>
+          <li class="off">❌ İndirilebilir PDF rapor</li>
+          <li class="off">❌ Geçmiş kaydı</li>
+        </ul>
+        <button class="btn ghost" style="width:100%; margin-top:auto;">Zaten buradasın</button>
+      </div>
+
+      <!-- KULLANDIKÇA ÖDE (kredi) -->
+      <div class="pcard credit">
+        <div class="ptier">Kullandıkça Öde</div>
+        <div class="pprice">19<span>₺ / kredi</span></div>
+        <p class="pdesc">Taahhüt yok — sadece ihtiyacın kadar</p>
+        <ul class="plist">
+          <li>✅ 1 kredi = 1 analiz + 1 PDF</li>
+          <li>✅ <b>3 kredi</b> — 39₺</li>
+          <li>✅ <b>10 kredi</b> — 99₺</li>
+          <li>✅ <b>15 kredi</b> — 129₺</li>
+          <li>✅ Krediler 6 ay geçerli</li>
+          <li class="off">❌ Sınırsız analiz</li>
+        </ul>
+        <button class="btn ghost" id="buyCredit" style="width:100%; margin-top:auto;">Kredi Satın Al</button>
+      </div>
+
+      <!-- PRO -->
+      <div class="pcard hot">
+        <div class="pbadge">EN POPÜLER</div>
+        <div class="ptier">Pro</div>
+        <div class="pprice">99₺<span>/ay</span></div>
+        <p class="pdesc">Ev kiracısı ve tüketiciler için</p>
+        <ul class="plist">
+          <li>✅ <b>Sınırsız</b> analiz</li>
+          <li>✅ <b>Sınırsız</b> PDF rapor</li>
+          <li>✅ Sözleşme geçmişi</li>
+          <li>✅ Zam/ceza alarmı</li>
+          <li>✅ Öncelikli işlem</li>
+        </ul>
+        <button class="btn red" style="width:100%; margin-top:auto;">Pro'ya Geç</button>
+      </div>
+
+      <!-- OFİS -->
+      <div class="pcard">
+        <div class="ptier">Ofis</div>
+        <div class="pprice">399₺<span>/ay</span></div>
+        <p class="pdesc">Emlakçı, avukat, mali müşavir için</p>
+        <ul class="plist">
+          <li>✅ Pro'daki her şey</li>
+          <li>✅ <b>Sınırsız</b> + ticari sözleşme</li>
+          <li>✅ Logonuzla beyaz etiket</li>
+          <li>✅ 5 kullanıcı hesabı</li>
+          <li>✅ API erişimi</li>
+          <li>✅ Müşteriye gönderilebilir rapor</li>
+        </ul>
+        <button class="btn ghost" style="width:100%; margin-top:auto;">İletişime Geç</button>
+      </div>
+    </div>
+
+    <p style="text-align:center; color:var(--mut); font-size:12px; margin-top:22px;">
+      🔒 Kart bilgisi istenmez · İstediğin an iptal · İlk 3 analiz bedava
+    </p>
+  </section>
+
+  <!-- NEDEN GÜVENEBİLİRİM? -->
+  <section id="guven" style="margin-top:64px;">
+    <div style="text-align:center; margin-bottom:14px;">
+      <span class="badge-sec">🛡️ Şeffaf ve denetlenebilir</span>
+      <h2 style="font-size:26px; font-weight:900; margin-top:16px; letter-spacing:-.8px;">İnsanlar bu uygulamaya neden güvenebilir?</h2>
+      <p style="color:var(--mut); font-size:14px; margin-top:10px; max-width:600px; margin-left:auto; margin-right:auto;">Sözleşme verisi en hassas veridir. Bizimki saklamaz, gizlemez, satmaz — ve her analizi kanıtlanabilir kılarız.</p>
+    </div>
+
+    <div class="trust-grid">
+      <div class="trust-card">
+        <span class="ic">🚫</span>
+        <h4>Sözleşmen saklanmaz</h4>
+        <p>Metin yalnızca analiz için AI'a gönderilir, sunucuda kopyası tutulmaz, üçüncü kişiyle paylaşılmaz.</p>
+      </div>
+      <div class="trust-card">
+        <span class="ic">🔍</span>
+        <h4>Her alıntı gerçek metinde</h4>
+        <p>Bulduğumuz her tehlikeli madde, sözleşmenin KENDİ satırından birebir alıntılanır — uydurma yok.</p>
+      </div>
+      <div class="trust-card">
+        <span class="ic">⚖️</span>
+        <h4>Hukuki tavsiye iddia etmez</h4>
+        <p>Bu bir risk tespit aracıdır. Son sözü avukatın söyler — biz sadece şüphe gölgesini gösteririz.</p>
+      </div>
+      <div class="trust-card">
+        <span class="ic">🇹🇷</span>
+        <h4>KVKK uyumlu</h4>
+        <p>6698 sayılı KVKK kapsamında veri işlemez, saklamaz. Analiz sonrası metin bellekten düşer.</p>
+      </div>
+    </div>
+
+    <p style="text-align:center; color:var(--mut); font-size:12.5px; margin-top:20px; line-height:1.7;">
+      💡 <b>En güvenilir kanıt:</b> Analizini <b>PDF olarak indir</b>, sözleşmenin yanına koy, madde madde karşılaştır.<br>Kendi gözünle doğrula — bize kör inanma.
+    </p>
+  </section>
+
+  <!-- ✍️ İMZA ÖNCESİ KONTROL LİSTESİ -->
+  <section id="checklist" style="margin-top:64px; max-width:760px; margin-left:auto; margin-right:auto;">
+    <div style="text-align:center; margin-bottom:22px;">
+      <h2 style="font-size:24px; font-weight:900;">✍️ İmzalamadan Önce 60 Saniyelik Kontrol</h2>
+      <p style="color:var(--mut); font-size:13.5px; margin-top:10px;">Analizden bağımsız, her sözleşme için işe yarayan 7 soru. Tikle — cebinde dursun.</p>
+    </div>
+    <div id="ckList">
+      <div class="check-item" data-ck="1"><div class="bx">✓</div><div class="ct"><b>Zam maddesi net mi?</b> "Yıllık artış oranı" rakamla yazılı mı, yoksa "piyasa koşullarına göre" mi bırakılmış?</div></div>
+      <div class="check-item" data-ck="2"><div class="bx">✓</div><div class="ct"><b>Fesih süresi iki taraflı mı?</b> Çıkmak senin için kaç gün, karşı taraf için kaç gün — eşit mi?</div></div>
+      <div class="check-item" data-ck="3"><div class="bx">✓</div><div class="ct"><b>Depozito koşulu yazılı mı?</b> Ne zaman iade edilir, hangi masraflar düşülebilir — açık mı?</div></div>
+      <div class="check-item" data-ck="4"><div class="bx">✓</div><div class="ct"><b>Otomatik yenileme var mı?</b> Varsa çıkış penceresi kaç gün önceden bildirilmeli?</div></div>
+      <div class="check-item" data-ck="5"><div class="bx">✓</div><div class="ct"><b>Cezai şart simetrik mü?</b> Sen öderken karşı tarafa tazminat yükümlülüğü de var mı?</div></div>
+      <div class="check-item" data-ck="6"><div class="bx">✓</div><div class="ct"><b>Gizli ücret sayıldı mı?</b> Komisyon, aidat, dosya, tahsis bedeli… toplam aylık maliyeti elle hesapla.</div></div>
+      <div class="check-item" data-ck="7"><div class="bx">✓</div><div class="ct"><b>Yetki klozu okundu mu?</b> Uyuşmazlık hangi şehrin mahkemesinde — senin için dezavantajlı mı?</div></div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; font-size:12px; color:var(--mut);">
+      <span id="ckProg">0 / 7 tamamlandı</span>
+      <button id="ckReset" style="background:none; border:none; color:var(--red); font-size:12px; cursor:pointer; font-family:inherit;">Sıfırla</button>
+    </div>
+  </section>
+
+  <!-- SSS -->
+  <section id="sss" style="margin-top:64px; max-width:760px; margin-left:auto; margin-right:auto;">
+    <h2 style="font-size:24px; font-weight:900; text-align:center; margin-bottom:24px;">Sıkça Sorulanlar</h2>
+    <details class="faq"><summary>Verdiğim sözleşme nereye gidiyor?</summary><div>Sözleşmen sadece analiz için yapay zekaya gönderilir, saklanmaz, üçüncü kişilerle paylaşılmaz. Pro'da geçmişi kaydetmek istersen sadece senin hesabında tutulur.</div></details>
+    <details class="faq"><summary>Yaptığınız analiz hukuki tavsiye sayılır mı?</summary><div>Hayır. Bu bir risk tespit aracıdır. İmzalamadan önce avukatınıza danışmanızı öneririz; amaç sizi en azından hangi maddeden şüpheleneceğinizi öğretmek.</div></details>
+    <details class="faq"><summary>Hangi sözleşmeleri okuyabilir?</summary><div>Kira, taksitli alışveriş, iş, alım-satım, abonelik ve hizmet sözleşmeleri. Türkçe metin yeterli.</div></details>
+    <details class="faq"><summary>Neden 3 ücretsiz analiz?</summary><div>Çünkü ilk sözleşmenin ne kadar tehlikeli olduğunu görünce zaten anlayacaksın. 3, tek başına bir kira dönemini kurtarmaya yeter.</div></details>
+  </section>
+
+</div>
+
+<!-- ÖDEME / PAYWALL -->
+<div class="modal" id="paywall">
+  <div class="box" style="text-align:center;">
+    <div style="font-size:44px; margin-bottom:10px;">🔒</div>
+    <h3>Bu ayki 3 ücretsiz analizini kullandın</h3>
+    <p><b>Kullandıkça öde:</b> sadece ihtiyacın kadar kredi al — taahhüt yok, iptal yok.<br><b>Pro:</b> sınırsız analiz + sınırsız PDF.</p>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:14px 0 6px;">
+      <button class="cpack" data-n="3" data-p="39"><b>3 kredi</b><span>39₺</span><i>1 analiz + 1 PDF</i></button>
+      <button class="cpack" data-n="10" data-p="99"><b>10 kredi</b><span>99₺</span><i>birim 9,9₺</i></button>
+      <button class="cpack" data-n="15" data-p="129"><b>15 kredi</b><span>129₺</span><i>birim 8,6₺</i></button>
+    </div>
+    <p style="font-size:11px; color:var(--mut); margin-bottom:12px;">1 kredi = 1 sözleşme analizi + 1 PDF raporu · Krediler 6 ay geçerli</p>
+    <button class="btn red" id="payPro" style="width:100%; padding:13px; font-size:14px;">Pro'ya Geç — 99₺/ay (sınırsız)</button>
+    <button class="btn ghost" id="payClose" style="width:100%; margin-top:10px;">Belki sonra</button>
+  </div>
+</div>
+
+<!-- PRO / PDF KİLİDİ -->
+<div class="modal" id="proModal">
+  <div class="box" style="text-align:center;">
+    <div style="font-size:40px; margin-bottom:8px;">📄</div>
+    <h3>PDF rapor için iki seçenek</h3>
+    <p><b>Tek seferlik:</b> sadece ihtiyacın kadar PDF kredisi al — taahhüt yok, iptal yok.<br><b>Pro:</b> sınırsız analiz + sınırsız PDF.</p>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:16px 0 6px;">
+      <button class="cpack" data-n="3" data-p="39"><b>3 kredi</b><span>39₺</span><i>birim 13₺</i></button>
+      <button class="cpack" data-n="10" data-p="99"><b>10 kredi</b><span>99₺</span><i>birim 9,9₺</i></button>
+      <button class="cpack" data-n="15" data-p="129"><b>15 kredi</b><span>129₺</span><i>birim 8,6₺</i></button>
+    </div>
+    <p style="font-size:11px; color:var(--mut); margin-bottom:12px;">Mevcut bakiye: <b id="credBal">0</b> kredi · Krediler 6 ay geçerli</p>
+    <button class="btn red" id="proGo" style="width:100%; padding:13px; font-size:14px;">Pro'ya Geç — 99₺/ay (sınırsız)</button>
+    <button class="btn ghost" id="proClose" style="width:100%; margin-top:10px;">Belki sonra</button>
+  </div>
+</div>
+
+<!-- AYARLAR -->
+<div class="modal" id="modal">
+  <div class="box">
+    <h3>🔑 AI Ayarları</h3>
+    <p>Analiz için bir yapay zeka servisi gerekir. Kendi API anahtarınızı girin — sadece tarayıcınızda saklanır, hiçbir sunucuya gönderilmez.</p>
+    <select id="prov">
+      <option value="openai">OpenAI (GPT-4o)</option>
+      <option value="google">Google (Gemini)</option>
+      <option value="openrouter">OpenRouter</option>
+    </select>
+    <input type="password" id="apikey" placeholder="API anahtarınızı buraya girin">
+    <div style="display:flex; gap:10px; justify-content:flex-end;">
+      <button class="btn ghost" id="close">Kapat</button>
+      <button class="btn red" id="save">Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const $$=sel=>Array.from(document.querySelectorAll(sel));
+let conf=JSON.parse(localStorage.getItem('soz_conf')||'{}');
+
+/* ---------- AYARLAR ---------- */
+$('keybtn').onclick=()=>{ $('apikey').value=conf.key||''; $('prov').value=conf.prov||'openai'; $('modal').classList.add('on'); };
+$('close').onclick=()=>$('modal').classList.remove('on');
+$('save').onclick=()=>{
+  conf.prov=$('prov').value; conf.key=$('apikey').value.trim();
+  localStorage.setItem('soz_conf',JSON.stringify(conf));
+  $('modal').classList.remove('on'); toast('✅ Anahtar kaydedildi');
+};
+
+/* ---------- DOSYA (txt / pdf / docx / fotoğraf-OCR) ---------- */
+const drop=$('drop');
+['dragenter','dragover'].forEach(e=>drop.addEventListener(e,ev=>{ev.preventDefault();drop.classList.add('over');}));
+['dragleave','drop'].forEach(e=>drop.addEventListener(e,ev=>{ev.preventDefault();drop.classList.remove('over');}));
+drop.addEventListener('drop',ev=>{
+  const f=ev.dataTransfer.files[0]; if(!f) return;
+  if(f.type.startsWith('image/')) ocrFile(f); else readFile(f);
+});
+$('pick').onclick=()=>$('file').click();
+$('file').onchange=e=>{ const f=e.target.files[0]; if(f) readFile(f); e.target.value=''; };
+$('photo').onclick=()=>$('imgfile').click();
+$('imgfile').onchange=e=>{ const f=e.target.files[0]; if(f) ocrFile(f); e.target.value=''; };
+
+const CDN={
+  pdfjs:'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js',
+  pdfworker:'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js',
+  mammoth:'https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js',
+  tesseract:'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'
+};
+function loadScript(src){
+  return new Promise((res,rej)=>{
+    if(document.querySelector('script[src="'+src+'"]')) return res();
+    const s=document.createElement('script'); s.src=src;
+    s.onload=res; s.onerror=()=>rej(new Error('Kütüphane yüklenemedi: '+src));
+    document.head.appendChild(s);
+  });
+}
+
+function setRaw(txt, name){
+  if(!txt || txt.trim().length<20){ toast('⚠️ Metin çıkarılamadı — daha net bir fotoğraf ya da dosya dene'); return; }
+  $('raw').value=txt;
+  toast('✅ '+(name?('“'+name+'”'):'Dosya')+' metne dönüştürüldü — analize hazır');
+}
+function setOcrStatus(m){ const el=$('ocrStatus'); if(!el) return; el.textContent=m; el.style.display=m?'block':'none'; }
+
+async function readFile(f){
+  if(!f) return;
+  const name=f.name.toLowerCase();
+
+  if(/\.(txt|text)$/i.test(name) || f.type==='text/plain'){
+    const r=new FileReader(); r.onload=()=>setRaw(r.result, f.name); r.readAsText(f); return;
+  }
+  if(/\.pdf$/i.test(name) || f.type==='application/pdf'){
+    setOcrStatus('📕 PDF okunuyor…');
+    try{
+      await loadScript(CDN.pdfjs);
+      if(window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc=CDN.pdfworker;
+      const buf=await f.arrayBuffer();
+      const pdf=await pdfjsLib.getDocument({data:buf}).promise;
+      let out='';
+      for(let p=1;p<=pdf.numPages;p++){
+        const page=await pdf.getPage(p);
+        const tc=await page.getTextContent();
+        let lastY=null, line='', parts=[];
+        for(const it of tc.items){
+          if(lastY!==null && Math.abs(it.transform[5]-lastY)>3){ parts.push(line); line=''; }
+          line+=it.str+' '; lastY=it.transform[5];
+        }
+        parts.push(line);
+        out+=parts.join('\n')+'\n\n';
+      }
+      setRaw(out.trim(), f.name);
+    }catch(e){ toast('⚠️ PDF okunamadı: '+e.message); }
+    setOcrStatus(''); return;
+  }
+  if(/\.(docx|doc)$/i.test(name) || /word/.test(f.type||'')){
+    setOcrStatus('📘 Word okunuyor…');
+    try{
+      await loadScript(CDN.mammoth);
+      const buf=await f.arrayBuffer();
+      const r=await mammoth.extractRawText({arrayBuffer:buf});
+      setRaw(r.value.trim(), f.name);
+    }catch(e){ toast('⚠️ Word okunamadı: '+e.message); }
+    setOcrStatus(''); return;
+  }
+  toast('⚠️ Desteklenmeyen dosya — PDF, Word (.docx), .txt yükle ya da metni yapıştır');
+}
+
+/* Fotoğraf → metin (Tesseract.js + Türkçe). İstemcide çalışır: görsel asla sunucuya gönderilmez. */
+async function ocrFile(f){
+  setOcrStatus('📷 Fotoğraf okunuyor… (ilk kez birkaç saniye sürebilir)');
+  try{
+    await loadScript(CDN.tesseract);
+    const oem=(window.Tesseract && Tesseract.OEM && Tesseract.OEM.LSTM_ONLY)||1;
+    const worker=await Tesseract.createWorker('tur', oem, {
+      logger:m=>{ if(m.status==='recognizing text') setOcrStatus('📷 Fotoğraf okunuyor… %'+Math.round(m.progress*100)); }
+    });
+    const { data:{ text } } = await worker.recognize(f);
+    await worker.terminate();
+    setRaw(text.trim(), f.name);
+  }catch(e){ toast('⚠️ Fotoğraf okunamadı: '+e.message); }
+  setOcrStatus('');
+}
+$('sample').onclick=()=>$('raw').value=SAMPLE;
+$('clear').onclick=()=>$('raw').value='';
+
+/* ---------- KOTA / PAYWALL ---------- */
+const FREE_LIMIT=3;
+function qkey(){ const d=new Date(); return 'soz_quota_'+d.getFullYear()+'_'+(d.getMonth()+1); }
+function getQuota(){ return parseInt(localStorage.getItem(qkey())||'0',10); }
+function addQuota(){ localStorage.setItem(qkey(), String(getQuota()+1)); updateQuota(); }
+function updateQuota(){
+  const u=getQuota(), left=Math.max(0,FREE_LIMIT-u);
+  const pct=Math.min(100, (u/FREE_LIMIT)*100);
+  $('quotaFill').style.width=pct+'%';
+  $('quotaFill').style.background = left<=1 ? 'var(--red)' : left===2 ? 'var(--amb)' : 'var(--grn)';
+  $('quotaTxt').innerHTML = left>0
+    ? `Bu ay <b>${left}</b> ücretsiz analizin kaldı`
+    : 'Bu ayki ücretsiz analizlerin <b>bitti</b>';
+}
+updateQuota();
+
+function checkQuota(){
+  if(getQuota()<FREE_LIMIT) return true;
+  // Kota bitti → kredi varsa 1 krediyle devam (1 analiz + 1 PDF hakkı)
+  if(useAnalysisCredit()){ toast('🎟️ 1 kredi kullanıldı — kalan: '+getCred().n+' kredi'); return true; }
+  $('paywall').classList.add('on');
+  return false;
+}
+$('upBtn').onclick=()=>$('pricing').scrollIntoView({behavior:'smooth'});
+$('payClose').onclick=()=>$('paywall').classList.remove('on');
+
+/* ---------- ANALİZ ---------- */
+let lastResult=null;   // paylaşım için
+$('analyze').onclick=analyze;
+
+async function analyze(){
+  const text=$('raw').value.trim();
+  if(!text){ toast('⚠️ Önce bir sözleşme yükle ya da yapıştır'); return; }
+  if(!checkQuota()) return;
+
+  const btn=$('analyze'), old=btn.innerHTML;
+  btn.disabled=true; btn.innerHTML='<span class="spin"></span> Analiz ediliyor…';
+  $('empty').style.display='none'; $('out').style.display='block';
+  $('out').innerHTML='<div class="empty"><span class="big">🔎</span>Sözleşme taranıyor…<br>Tehlikeli maddeler işaretleniyor.</div>';
+
+  try{
+    let out;
+    if(serverOK){
+      // ANAHTARSIZ MOD — sunucu analiz eder
+      const r=await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text})});
+      out=await r.json();
+      if(!r.ok) throw new Error(out.error||('Sunucu hatası '+r.status));
+    }else if(conf.key){
+      // YEDEK — kullanıcının kendi anahtarı
+      out=await callAI(buildPrompt(text));
+    }else{
+      $('keybtn').click();
+      throw new Error('Analiz servisi şu an kapalı. Ayarlardan kendi anahtarını girebilirsin.');
+    }
+    lastResult=out;
+    addQuota();
+    render(out);
+    buildMap(text, out.clauses||[]);
+    saveHistory(out, text);
+    $('sharebar').style.display='block';
+    toast('✅ Analiz tamamlandı');
+  }catch(e){
+    $('out').innerHTML='<div class="empty" style="color:var(--red)"><span class="big">❌</span>'+esc(e.message)+'</div>';
+  }finally{ btn.disabled=false; btn.innerHTML=old; }
+}
+
+function buildPrompt(text){
+return `Sen Türkiye'de 20 yıllık deneyimli bir tüketici ve kira hukuku uzmanısın. Aşağıdaki sözleşmeyi analiz et.
+
+Amaç: Sıradan bir vatandaşın bu sözleşmeyi imzalayacağı zaman cüzdanından para kaybedeceği, hak kaybı yaşayacağı maddeleri BUL ve açıkla.
+
+Sadece geçerli JSON döndür, başka hiçbir şey yazma. Şema:
+{
+  "riskScore": 0-100 arası integer (düşük risk = yüksek puan),
+  "headline": "tek cümlelik genel değerlendirme",
+  "totalLoss": "tahmini parasal risk (örn: 'Aylık 2.400 ₺ zam riski')",
+  "clauses": [
+    {
+      "name": "madde başlığı/kısa adı",
+      "severity": "high" | "mid" | "low",
+      "quote": "sözleşmeden birebir alıntılanan madde (Türkçe)",
+      "explain": "bu madde neden tehlikeli, sıradan dille 2-3 cümle",
+      "fix": "müzakere ederken ne diyeceksin / ne isteyeceksin"
+    }
+  ],
+  "summary": "genel görüş ve ne yapmalı, 3-4 cümle"
+}
+
+En az 3, en fazla 8 madde bul. Yüksek öncelik: gizli zam, otomatik yenileme, fesih/ceza, depozito/kesinti, tek taraflı hak, garanti dışı tutma, gizli komisyon.
+
+SÖZLEŞME:
+"""${text}"""`;
+}
+
+async function callAI(prompt){
+  let url,hdr,body;
+  if(conf.prov==='openai'){
+    url='https://api.openai.com/v1/chat/completions';
+    hdr={'Content-Type':'application/json','Authorization':'Bearer '+conf.key};
+    body={model:'gpt-4o-mini',messages:[{role:'user',content:prompt}],temperature:.3,response_format:{type:'json_object'}};
+  }else if(conf.prov==='google'){
+    url='https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key='+conf.key;
+    hdr={'Content-Type':'application/json'};
+    body={contents:[{parts:[{text:prompt}]}],generationConfig:{response_mime_type:'application/json'}};
+  }else{
+    url='https://openrouter.ai/api/v1/chat/completions';
+    hdr={'Content-Type':'application/json','Authorization':'Bearer '+conf.key};
+    body={model:'openai/gpt-4o-mini',messages:[{role:'user',content:prompt}],temperature:.3,response_format:{type:'json_object'}};
+  }
+  const r=await fetch(url,{method:'POST',headers:hdr,body:JSON.stringify(body)});
+  const j=await r.json();
+  if(!r.ok) throw new Error(j.error?.message||('API hatası '+r.status));
+  let raw = conf.prov==='google' ? j.candidates[0].content.parts[0].text : j.choices[0].message.content;
+  return JSON.parse(raw.replace(/```json|```/g,'').trim());
+}
+
+/* ---------- RENDER ---------- */
+function render(d){
+  let s=Math.max(0,Math.min(100,d.riskScore||0));
+  // Model 0-1 arası verirse (örn. 0.95) → 0-100'e ölçekle
+  if(s>0 && s<=1) s=Math.round(s*100);
+  const col = s>=70?'var(--grn)' : s>=40?'var(--amb)' : 'var(--red)';
+  const lbl = s>=70?'GÜVENLİ' : s>=40?'DİKKATLİ OL' : 'TEHLİKELİ';
+  let h=`<div class="score">
+    <div class="ring" style="background:conic-gradient(${col} ${s*3.6}deg,#252b3b 0deg);"><div style="width:62px;height:62px;border-radius:50%;background:var(--card);display:grid;place-items:center;color:${col};font-size:20px;font-weight:900;">${s}</div></div>
+    <div class="meta"><h4 style="color:${col}">${lbl}</h4><p>${esc(d.headline||'')}</p>${d.totalLoss?`<p style="color:var(--red);font-weight:700;margin-top:6px;">💸 ${esc(d.totalLoss)}</p>`:''}</div>
+  </div>`;
+
+  (d.clauses||[]).forEach(c=>{
+    const sev=c.severity==='high'?'high':c.severity==='mid'?'mid':'low';
+    const t=sev==='high'?'YÜKSEK RİSK':sev==='mid'?'ORTA RİSK':'DÜŞÜK';
+    h+=`<div class="clause ${sev}">
+      <div class="top"><span class="name">${esc(c.name||'Madde')}</span><span class="tag ${sev}">${t}</span></div>
+      <div class="quote">"${esc(c.quote||'')}"</div>
+      <div class="exp">${esc(c.explain||'')}</div>
+      <div class="fix"><b>💡 Müzakere:</b> ${esc(c.fix||'')}</div>
+    </div>`;
+  });
+
+  if(d.summary) h+=`<div class="sumbox"><h4>📜 Genel Görüş</h4><p>${esc(d.summary)}</p></div>`;
+
+  // 📊 istatistik şeridi
+  const cs=d.clauses||[];
+  const hi=cs.filter(c=>c.severity==='high').length;
+  const md=cs.filter(c=>c.severity==='mid').length;
+  h+=`<div class="stat-strip">
+    <div class="stat-box"><div class="v" style="color:${col}">${s}</div><div class="k">Risk puanı</div></div>
+    <div class="stat-box"><div class="v" style="color:var(--red)">${hi}</div><div class="k">Yüksek riskli madde</div></div>
+    <div class="stat-box"><div class="v" style="color:var(--amb)">${md}</div><div class="k">Orta riskli madde</div></div>
+    <div class="stat-box"><div class="v">${cs.length}</div><div class="k">Toplam tespit</div></div>
+  </div>`;
+
+  $('out').innerHTML=h;
+}
+
+/* ---------- 🗺️ SÖZLEŞME HARİTASI ---------- */
+function trNorm(s){
+  return String(s)
+    .toLocaleLowerCase('tr')
+    .replace(/[ıî]/g,'i').replace(/[ş]/g,'s').replace(/[ğ]/g,'g')
+    .replace(/[ü]/g,'u').replace(/[ö]/g,'o').replace(/[ç]/g,'c')
+    .replace(/[’‘`]/g,"'").replace(/[“”]/g,'"')
+    .replace(/\s+/g,' ').trim();
+}
+
+// normalize metin + her normalize karakterin orijinal indeksine eşlemesi
+function normMap(orig){
+  let out=''; const idx=[];
+  let pendingSpace=false;
+  for(let i=0;i<orig.length;i++){
+    const c=orig[i];
+    if(/\s/.test(c)){ if(out.length>0) pendingSpace=true; continue; }
+    if(pendingSpace){ out+=' '; idx.push(i); pendingSpace=false; }
+    const f=trNorm(c);
+    if(f && f!==' '){ out+=f; idx.push(i); }
+  }
+  return {n:out, idx};
+}
+
+// normalize metinde [nIdx, nIdx+nLen) → orijinal [start, end)
+function toOrig(map, nIdx, nLen){
+  if(nIdx<0 || nIdx+nLen>map.idx.length) return null;
+  const start=map.idx[nIdx];
+  const last=map.idx[nIdx+nLen-1];
+  if(start==null || last==null || last<start) return null;
+  return {start, end:last+1};
+}
+
+// Orijinal metinde alıntıyı bul; bulamazsa kelimelerden fuzzy dene
+function findQuote(text, quote, map){
+  const nT=map.n, nQ=trNorm(quote||'');
+  if(nQ.length<6) return null;
+  const tryAt=(q)=>{
+    const i=nT.indexOf(q);
+    if(i<0) return null;
+    return toOrig(map, i, q.length);
+  };
+  let r=tryAt(nQ); if(r) return r;
+  const words=nQ.split(' ').filter(w=>w.length>2);
+  for(const k of [8,6,5,4,3]){
+    if(words.length<=k) continue;
+    r=tryAt(words.slice(0,k).join(' ')); if(r) return r;
+  }
+  for(const k of [5,4,3]){
+    if(words.length<=k) continue;
+    r=tryAt(words.slice(-k).join(' ')); if(r) return r;
+  }
+  return null;
+}
+
+function buildMap(text, clauses){
+  const doc=$('docView'), vr=$('verifyRow');
+  if(!text || !clauses || !clauses.length){ $('mapSec').style.display='none'; return; }
+
+  const map=normMap(text);
+  const ranges=[]; let found=0;
+  clauses.forEach((c,i)=>{
+    const pos=findQuote(text, c.quote, map);
+    if(pos){
+      found++;
+      const sev=c.severity==='high'?'high':c.severity==='mid'?'mid':'low';
+      ranges.push({start:pos.start, end:pos.end, sev, i});
+    }
+  });
+
+  // çakışan aralıkları birleştir (iç içe mark bozulmasın)
+  ranges.sort((a,b)=>a.start-b.start);
+  const clean=[];
+  for(const r of ranges){
+    const last=clean[clean.length-1];
+    if(last && r.start<last.end){ last.end=Math.max(last.end,r.end); }
+    else clean.push({...r});
+  }
+
+  // HTML üret: aralıkları işaretle
+  let html='', cur=0;
+  for(const r of clean){
+    if(r.start<cur) continue;
+    html+=esc(text.slice(cur, r.start));
+    html+=`<mark class="${r.sev}" data-cl="${r.i}">${esc(text.slice(r.start, r.end))}</mark>`;
+    cur=r.end;
+  }
+  html+=esc(text.slice(cur));
+  doc.innerHTML=html;
+
+  // 🔎 doğrulama rozetleri — alıntıların gerçekte metinde olup olmadığı
+  const total=clauses.length;
+  const miss=total-found;
+  vr.innerHTML =
+    `<span class="verify-chip ok">✅ Alıntının ${found}/${total}'i sözleşmenin kendi metninde birebir bulundu</span>` +
+    (miss>0 ? `<span class="verify-chip warn">⚠️ ${miss} alıntı metinle birebir eşleşmedi (yine de geçerli olabilir)</span>` : `<span class="verify-chip ok">🔍 Uydurma alıntı yok — hepsi gerçek satır</span>`) +
+    `<span class="verify-chip">📏 ${text.length.toLocaleString('tr-TR')} karakter tarandı</span>`;
+
+  $('printFoot').textContent='Gizli Madde ile analiz edildi — bu rapor hukuki tavsiye değildir, avukata danışın.';
+  $('mapSec').style.display='block';
+}
+
+// Harita tıklaması → ilgili maddeye atla ve vurgula
+document.addEventListener('click', e=>{
+  const m=e.target.closest('#docView mark[data-cl]');
+  if(!m) return;
+  const cards=$$('#out .clause');
+  const card=cards[+m.dataset.cl];
+  if(!card) return;
+  card.scrollIntoView({behavior:'smooth', block:'center'});
+  card.classList.add('flash');
+  setTimeout(()=>card.classList.remove('flash'), 1900);
+});
+
+/* ---------- 🖨️ PDF / YAZDIR (Pro veya Kredi) ---------- */
+function isPro(){ return localStorage.getItem('soz_pro')==='1'; }
+
+/* 🎟️ Kredi: 1 kredi = 1 ek analiz + 1 PDF raporu */
+const CRED_KEY='soz_credits_v1';
+function getCred(){
+  try{ const c=JSON.parse(localStorage.getItem(CRED_KEY)||'{}'); return { n:c.n||0, pdf:c.pdf||0 }; }
+  catch(e){ return { n:0, pdf:0 }; }
+}
+function setCred(c){ try{ localStorage.setItem(CRED_KEY, JSON.stringify(c)); }catch(e){} }
+function addCredits(n){ const c=getCred(); c.n+=n; c.pdf+=n; setCred(c); updateProBadge(); }
+function useAnalysisCredit(){ const c=getCred(); if(c.n<=0) return false; c.n--; setCred(c); updateProBadge(); return true; }
+function usePdfCredit(){ const c=getCred(); if(c.pdf<=0) return false; c.pdf--; setCred(c); updateProBadge(); return true; }
+
+function updateProBadge(){
+  const c=getCred();
+  const b=$('printBtn');
+  if(b) b.textContent = isPro() ? '⬇️ PDF İndir / Yazdır' : (c.pdf>0 ? '⬇️ PDF İndir ('+c.pdf+' hak)' : '🔒 PDF İndir');
+  const chip=$('credChip');
+  if(chip){
+    chip.style.display = (c.n>0||c.pdf>0) ? 'flex' : 'none';
+    chip.innerHTML = '🎟️ <b>'+c.n+'</b> kredi · <b>'+c.pdf+'</b> PDF';
+  }
+  const bal=$('credBal'); if(bal) bal.textContent=c.n+' kredi / '+c.pdf+' PDF';
+}
+
+$('printBtn').onclick = ()=>{
+  if(!lastResult){ toast('⚠️ Önce analiz yap'); return; }
+  if(isPro()){ toast('📄 Yazdırma penceresi açılıyor → "PDF olarak kaydet" seç'); setTimeout(()=>window.print(),500); return; }
+  if(usePdfCredit()){
+    toast('📄 1 PDF hakkı kullanıldı — kalan: '+getCred().pdf);
+    setTimeout(()=>window.print(),600);
+    return;
+  }
+  $('proModal').classList.add('on');
+};
+
+/* Kredi paketi butonları (her yerde çalışır) */
+document.addEventListener('click', e=>{
+  const p=e.target.closest('.cpack'); if(!p) return;
+  const n=+p.dataset.n, pr=+p.dataset.p;
+  addCredits(n);
+  $('proModal').classList.remove('on'); $('paywall').classList.remove('on');
+  toast('🎟️ '+n+' kredi eklendi ('+pr+'₺) — bakiye: '+getCred().n+' kredi, '+getCred().pdf+' PDF');
+});
+$('buyCredit').onclick=()=>$('proModal').classList.add('on');
+$('payPro').onclick=()=>{ $('paywall').classList.remove('on'); $('proModal').classList.add('on'); };
+
+$('proGo').onclick=()=>{
+  // Not: Ödeme sağlayıcısı henüz bağlı değil; demo amaçlı Pro etkinleştirilir.
+  localStorage.setItem('soz_pro','1');
+  $('proModal').classList.remove('on');
+  updateProBadge();
+  toast('✅ Pro etkinleştirildi (demo). Ödeme entegrasyonu hazır olduğunda burada alınır.');
+};
+$('proClose').onclick=()=>$('proModal').classList.remove('on');
+updateProBadge();
+
+/* ---------- ✍️ KONTROL LİSTESİ ---------- */
+(function(){
+  const KEY='soz_ck_v1';
+  const items=$$('#ckList .check-item');
+  let st={};
+  try{ st=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+  const prog=$('ckProg');
+  function paint(){
+    let n=0;
+    items.forEach(it=>{ const on=!!st[it.dataset.ck]; it.classList.toggle('done',on); if(on)n++; });
+    prog.textContent=n+' / 7 tamamlandı';
+    prog.style.color = n===7 ? 'var(--grn)' : 'var(--mut)';
+  }
+  items.forEach(it=>{
+    it.onclick=()=>{ st[it.dataset.ck]=!st[it.dataset.ck]; localStorage.setItem(KEY,JSON.stringify(st)); paint(); };
+  });
+  $('ckReset').onclick=()=>{ st={}; localStorage.removeItem(KEY); paint(); };
+  paint();
+})();
+
+/* ---------- UTIL ---------- */
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let tt;
+function toast(m){ const t=$('toast'); t.textContent=m; t.classList.add('on'); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove('on'),3200); }
+
+/* ---------- 📚 ANALİZ GEÇMİŞİ (Pro) ---------- */
+const HIST_KEY='soz_hist';
+function getHist(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)||'[]'); }catch(e){ return []; } }
+function saveHistory(d, text){
+  const h=getHist();
+  h.unshift({ t:Date.now(), score:d.riskScore||0, n:(d.clauses||[]).length, headline:d.headline||'', loss:d.totalLoss||'', data:d, text:text||'' });
+  try{ localStorage.setItem(HIST_KEY, JSON.stringify(h.slice(0,10))); }catch(e){}
+  renderHist();
+}
+function renderHist(){
+  const sec=$('histSec'); if(!sec) return;
+  const list=$('histList'), locked=$('histLocked');
+  const h=getHist();
+  if(!h.length){ sec.style.display='none'; return; }
+  sec.style.display='block';
+  if(!isPro()){ if(locked) locked.style.display='block'; list.innerHTML=''; return; }
+  if(locked) locked.style.display='none';
+  list.innerHTML=h.map((x,i)=>{
+    const s=x.score||0;
+    const col=s>=70?'var(--grn)':s>=40?'var(--amb)':'var(--red)';
+    const lbl=s>=70?'GÜVENLİ':s>=40?'DİKKATLİ':'TEHLİKELİ';
+    const d=new Date(x.t);
+    const dt=d.toLocaleDateString('tr-TR',{day:'2-digit',month:'short'})+' '+d.toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
+    return '<div class="hcard" data-i="'+i+'" style="cursor:pointer; background:var(--card2); border:1px solid var(--line); border-radius:12px; padding:14px; transition:.15s;">'
+      +'<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">'
+      +'<span style="font-size:22px; font-weight:900; color:'+col+';">'+s+'</span>'
+      +'<span style="font-size:10.5px; color:var(--mut);">'+dt+'</span></div>'
+      +'<div style="font-size:11px; font-weight:700; color:'+col+'; margin-bottom:6px;">'+lbl+' · '+x.n+' madde</div>'
+      +'<div style="font-size:12px; color:var(--mut); line-height:1.5;">'+esc(x.headline||'')+'</div></div>';
+  }).join('');
+}
+$('histList').addEventListener('click', e=>{
+  const c=e.target.closest('.hcard'); if(!c) return;
+  const x=getHist()[+c.dataset.i]; if(!x) return;
+  lastResult=x.data; render(x.data); buildMap(x.text||'', x.data.clauses||[]);
+  $('sharebar').style.display='block';
+  toast('📂 Geçmişten yüklendi');
+});
+$('histPro').onclick=()=>$('proModal').classList.add('on');
+renderHist();
+
+/* ---------- SUNUCU DURUMU ---------- */
+let serverOK=false;
+fetch('/api/status').then(r=>r.json()).then(j=>{ serverOK=!!j.key; updateDot(); }).catch(()=>{ serverOK=false; updateDot(); });
+function updateDot(){
+  const d=$('modedot'), k=$('keybtn');
+  if(serverOK){
+    // Sunucuda anahtar var → kullanıcı hiçbir şey girmez
+    d.innerHTML='<span style="width:7px;height:7px;border-radius:50%;background:var(--grn);"></span> Yapay zeka hazır';
+    d.style.color='var(--grn)';
+    k.style.display='none';
+  }else{
+    // Sunucu anahtarsız → yedek mod, kullanıcı kendi anahtarını girebilir
+    d.innerHTML='<span style="width:7px;height:7px;border-radius:50%;background:var(--amb);"></span> AI kapalı';
+    d.style.color='var(--amb)';
+    k.style.display='inline-block';
+  }
+}
+
+/* ---------- DAVET / REFERANS ---------- */
+const UID = localStorage.getItem('soz_uid') || (()=>{ const u='u'+Math.random().toString(36).slice(2,9); localStorage.setItem('soz_uid',u); return u; })();
+const URL_BASE = location.origin + location.pathname;
+const inviteURL = () => URL_BASE + '?ref=' + UID;
+
+(function(){
+  const ref=new URLSearchParams(location.search).get('ref');
+  if(ref && ref!==UID){
+    const n=localStorage.getItem('soz_ref_'+ref);
+    $('refName').textContent = n ? (n+' seni davet etti') : 'Bir arkadaşın';
+    $('refNotice').style.display='block';
+    localStorage.setItem('soz_lastref',ref);
+    localStorage.setItem('soz_ref_'+ref, 'Arkadaşın');
+  }
+})();
+
+/* ---------- PAYLAŞIM ---------- */
+function shareText(){
+  const s=lastResult?.riskScore;
+  const n=(lastResult?.clauses||[]).length;
+  let base='🔍 Gizli Madde: Sözleşmeni 30 saniyede taradım, ';
+  if(s!=null){
+    base += s<40 ? `${n} tehlikeli madde yakaladı! 🔴` :
+            s<70 ? `${n} riskli madde çıktı. 🟡` : `şükür temiz çıktı ✅`;
+  } else base += 'bayağı işe yarıyor.';
+  return base + ' Sen de dene (ücretsiz): ' + inviteURL();
+}
+
+function dlCard(cb){
+  const d=lastResult; if(!d){ toast('⚠️ Önce analiz yap'); return; }
+  const W=1080,H=1080, c=document.createElement('canvas'); c.width=W; c.height=H;
+  const x=c.getContext('2d');
+  const s=Math.max(0,Math.min(100,d.riskScore||0));
+  const hi=(d.clauses||[]).filter(k=>k.severity==='high').length;
+  const col = s>=70?'#22d47f' : s>=40?'#ffb020' : '#ff4d5e';
+  const lbl = s>=70?'GÜVENLİ' : s>=40?'DİKKATLİ OL' : 'TEHLİKELİ';
+
+  const g=x.createLinearGradient(0,0,W,H); g.addColorStop(0,'#12151f'); g.addColorStop(1,'#0b0d12');
+  x.fillStyle=g; x.fillRect(0,0,W,H);
+
+  // logo
+  x.fillStyle='#ff4d5e'; rr(x,80,80,96,96,24); x.fill();
+  x.font='56px serif'; x.fillText('🔍',104,152);
+
+  x.fillStyle='#e8ecf5'; x.font='800 44px system-ui,sans-serif';
+  x.fillText('Gizli Madde',200,130);
+  x.fillStyle='#8a93a8'; x.font='300 30px system-ui,sans-serif';
+  x.fillText('İmzalamadan önce gizli maddeleri gör.',200,172);
+
+  // ring
+  x.lineWidth=42; x.strokeStyle='#252b3b';
+  x.beginPath(); x.arc(W/2,430,190,0,Math.PI*2); x.stroke();
+  x.strokeStyle=col;
+  x.beginPath(); x.arc(W/2,430,190,-Math.PI/2,-Math.PI/2+Math.PI*2*s/100); x.stroke();
+
+  x.fillStyle=col; x.font='900 130px system-ui,sans-serif'; x.textAlign='center';
+  x.fillText(s, W/2, 470);
+  x.font='800 38px system-ui,sans-serif'; x.fillText(lbl, W/2, 530);
+  x.textAlign='left';
+
+  // kutular
+  card(x,80,600,440,140,'⚠️ Tehlikeli madde', hi+' adet', hi>0?'#ff4d5e':'#22d47f');
+  card(x,560,600,440,140,'🔎 Taranan madde',(d.clauses||[]).length+' adet','#e8ecf5');
+
+  // para riski
+  x.fillStyle='#1c1016'; rr(x,80,780,920,120,20); x.fill();
+  x.strokeStyle='#3a2028'; x.lineWidth=2; x.stroke();
+  x.fillStyle='#8a93a8'; x.font='600 28px system-ui,sans-serif';
+  x.fillText('💸 Tahmini parasal risk',116,828);
+  x.fillStyle='#ff4d5e'; x.font='800 40px system-ui,sans-serif';
+  x.fillText(d.totalLoss||'—',116,880);
+
+  // footer
+  x.fillStyle='#8a93a8'; x.font='300 26px system-ui,sans-serif';
+  x.textAlign='center'; x.fillText('Sen de 30 saniyede dene →', W/2, 980);
+  x.fillStyle='#ff4d5e'; x.font='700 34px system-ui,sans-serif';
+  x.fillText(URL_BASE.replace(/^https?:\/\//,''), W/2, 1026);
+  x.textAlign='left';
+
+  c.toBlob(b=>cb(b),'image/png');
+}
+function rr(x,a,b,w,h,r){ x.beginPath(); x.moveTo(a+r,b); x.arcTo(a+w,b,a+w,b+h,r); x.arcTo(a+w,b+h,a,b+h,r); x.arcTo(a,b+h,a,b,r); x.arcTo(a,b,a+w,b,r); x.closePath(); }
+function card(x,a,b,w,h,t,v,col){
+  x.fillStyle='#1a1f2e'; rr(x,a,b,w,h,18); x.fill();
+  x.fillStyle='#8a93a8'; x.font='600 28px system-ui,sans-serif'; x.fillText(t,a+34,b+52);
+  x.fillStyle=col; x.font='900 56px system-ui,sans-serif'; x.fillText(v,a+34,b+116);
+}
+function saveBlob(b,nm){ const u=URL.createObjectURL(b); const a=document.createElement('a'); a.href=u; a.download=nm; a.click(); setTimeout(()=>URL.revokeObjectURL(u),1500); }
+
+$('sWp').onclick = ()=> window.open('https://wa.me/?text='+encodeURIComponent(shareText()),'_blank');
+$('sX').onclick  = ()=> window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText()),'_blank');
+$('sTg').onclick = ()=> window.open('https://t.me/share/url?url='+encodeURIComponent(inviteURL())+'&text='+encodeURIComponent(shareText()),'_blank');
+
+$('sIg').onclick = ()=>{
+  dlCard(b=>{ saveBlob(b,'sozlesme-raporum.png'); copy(shareText()); toast('🎴 Kart indirildi + metin kopyalandı. Instagram Story\'ye yapıştır!'); });
+};
+$('sCard').onclick = ()=> dlCard(b=>{ saveBlob(b,'sozlesme-raporum.png'); toast('🎴 Kart indirildi'); });
+
+$('invite').onclick = ()=>{ copy(inviteURL()); toast('🔗 Davet linkin kopyalandı! WhatsApp\'a yapıştır.'); };
+
+function copy(t){ navigator.clipboard?.writeText(t).catch(()=>{}); }
+
+const SAMPLE=`KİRA SÖZLEŞMESİ
+
+Taraflar: Kiracı Ahmet Yılmaz - Ev Sahibi Mehmet Demir
+
+Madde 3: Kira bedeli aylık 15.000 TL'dir. Kira bedili her yıl %40 oranında TÜFE artışının 3 katı oranında artırılacaktır.
+
+Madde 4: Kiracı, sözleşme süresi bitiminden 6 ay önce yazılı bildirimde bulunmadığı takdirde sözleşme aynı koşullarla bir yıl daha kendiliğinden yenilenmiş sayılır.
+
+Madde 5: Kiracı, taşınmazı üçüncü kişilere kiraya veremez, alt kira sözleşmesi yapamaz.
+
+Madde 6: Depozito olarak 2 aylık kira bedeli peşin alınır. Depozito, taşınmazın olağan dışı yıpranmaları düşülerek iade edilir. Olağan yıpranma tanımı Ev Sahibi'ne aittir.
+
+Madde 7: Kiracı, erken feshetmesi halinde kalan tüm ayların kira bedelini tazminat olarak ödeyecektir.
+
+Madde 8: Ev sahibi, yılda 2 kez 24 saat önceden haber vererek taşınmazı kontrol amaçlı ziyaret edebilir.
+
+Madde 9: Elektrik, su, doğalgaz ve internet abonelikleri kiracı üzerine alınır; abonelik ücretleri ve damga vergisi kiracıya aittir.
+
+Madde 10: İşbu sözleşmeden doğabilecek tüm uyuşmazlıklarda İstanbul Anadolu Mahkemeleri yetkilidir. Taraflar icra takibine itiraz etmeyi şimdiden kabul eder.`;
+</script>
+</body>
+</html>
