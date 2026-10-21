@@ -201,8 +201,9 @@ http.createServer(async (req, res) => {
     });
   }
 
-  /* --- Statik dosya (temiz URL: /rehber/<slug> → rehber/<slug>.html) --- */
-  let file = req.url === "/" ? "/index.html" : req.url.split("?")[0];
+  /* --- Statik dosya (sorgu paraliini ayirir, temiz URL: /rehber/<slug> → .html) --- */
+  let file = req.url.split("?")[0];
+  if (file === "/" || file === "") file = "/index.html";
   if (/^\/rehber\/[a-z0-9-]+$/.test(file)) file += ".html";
   const fp = path.join(__dirname, path.normalize(file).replace(/^(\.\.[\/\\])+/, ""));
   const MIME = {
