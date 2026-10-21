@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://gizli-madde.onrender.com/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://gizli-madde.onrender.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://gizli-madde.onrender.com/rehber/kira-zam-orani</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gizli-madde.onrender.com/rehber/depozito-kac-ay</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gizli-madde.onrender.com/rehber/kira-fesih-ihbar-suresi</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gizli-madde.onrender.com/rehber/emlakci-komisyonu</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gizli-madde.onrender.com/rehber/otomatik-yenileme-maddesi</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gizli-madde.onrender.com/rehber/taksitli-alisveris-tuzaklari</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gizli-madde.onrender.com/rehber/is-sozlesmesi-rekabet-yasagi</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gizli-madde.onrender.com/rehber/ogrenci-ev-sozlesmesi</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gizli-madde.onrender.com/rehber/elle-yazilan-madde</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gizli-madde.onrender.com/rehber/sozlesme-okuma-rehberi</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

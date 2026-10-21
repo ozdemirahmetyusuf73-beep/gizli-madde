@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 64 64" fill="none" aria-label="Gizli Madde logosu">
+  <defs>
+    <linearGradient id="kmBg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff6b7a"/><stop offset="1" stop-color="#c8102e"/>
+    </linearGradient>
+    <linearGradient id="kmPaper" x1="18" y1="10" x2="46" y2="54" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/><stop offset="1" stop-color="#dfe5f0"/>
+    </linearGradient>
+    <filter id="kmShadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <!-- Arka plan kalkan (guven) -->
+  <path d="M32 3 L56 12 V31 C56 46 45 56 32 61 C19 56 8 46 8 31 V12 Z"
+        fill="url(#kmBg)" opacity="0.16" stroke="url(#kmBg)" stroke-width="1.6"/>
+  <!-- Belge -->
+  <g filter="url(#kmShadow)">
+    <path d="M20 12 H37 L45 20 V49 C45 51.2 43.2 53 41 53 H20 C17.8 53 16 51.2 16 49 V15 C16 12.8 17.8 11 20 11 Z"
+          transform="translate(0,0.5)" fill="url(#kmPaper)"/>
+    <path d="M37 12 L45 20 H39 C37.9 20 37 19.1 37 18 Z" fill="#b9c2d4"/>
+  </g>
+  <!-- Normal satirlar -->
+  <rect x="21" y="26" width="19" height="2.6" rx="1.3" fill="#8a93a8"/>
+  <rect x="21" y="32" width="14" height="2.6" rx="1.3" fill="#8a93a8"/>
+  <!-- KIRMIZI MADDE (isaretli satir) -->
+  <rect x="21" y="38.5" width="19" height="6" rx="3" fill="#ff4d5e"/>
+  <rect x="21" y="47" width="10" height="2.6" rx="1.3" fill="#8a93a8"/>
+  <!-- Buyutec (analiz) -->
+  <circle cx="43" cy="43" r="8.5" stroke="#ff4d5e" stroke-width="3" fill="#0b0d12" fill-opacity="0.75"/>
+  <line x1="49.5" y1="49.5" x2="56" y2="56" stroke="#ff4d5e" stroke-width="4" stroke-linecap="round"/>
+  <path d="M39.5 43 L42 45.5 L46.5 40.5" stroke="#22d47f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

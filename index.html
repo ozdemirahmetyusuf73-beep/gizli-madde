@@ -289,7 +289,7 @@
   @media print {
     header .keybtn, #modedot, .hero, .drop, #raw, #analyze, #clear, #sharebar,
     #pricing, .faq, #quotaBar, #upBtn, .toast, .modal, #keybtn,
-    #guven, #sss, #checklist, #gizlilik, footer, .empty, .map-hint { display:none !important; }
+    #guven, #sss, #checklist, #gizlilik, #rehber, footer, .empty, .map-hint { display:none !important; }
     body { background:#fff !important; color:#111 !important; padding:0; }
     .wrap { max-width:100%; }
     .panel, .trust-card, .stat-box, .check-item { background:#fff !important; border-color:#ddd !important; color:#111 !important; }
@@ -312,6 +312,13 @@
   /* --- Geçmiş kartları --- */
   .hcard { cursor:pointer; transition:.15s; }
   .hcard:hover { border-color:#3a4256 !important; transform:translateY(-2px); }
+
+  /* --- Rehber kartları --- */
+  .reh { display:block; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:15px 16px; text-decoration:none; color:var(--txt); transition:.16s; }
+  .reh:hover { border-color:var(--red); transform:translateY(-3px); box-shadow:0 10px 26px rgba(0,0,0,.42); }
+  .reh .n { font-size:11px; color:var(--red); font-weight:800; letter-spacing:1.2px; }
+  .reh h3 { font-size:14.5px; margin:6px 0 6px; line-height:1.35; letter-spacing:-.3px; }
+  .reh p { font-size:12px; color:var(--mut); line-height:1.55; margin:0; }
 </style>
 </head>
 <body>
@@ -625,6 +632,27 @@
     <details class="faq"><summary>Neden 3 ücretsiz analiz?</summary><div>Çünkü ilk sözleşmenin ne kadar tehlikeli olduğunu görünce zaten anlayacaksın. 3, tek başına bir kira dönemini kurtarmaya yeter.</div></details>
   </section>
 
+  <!-- 📚 REHBER -->
+  <section id="rehber" style="margin-top:64px;">
+    <div style="text-align:center; margin-bottom:24px;">
+      <span class="badge-sec">📚 Sözleşme Rehberi</span>
+      <h2 style="font-size:26px; font-weight:900; margin-top:14px; letter-spacing:-.8px;">İmzalamadan önce bilmen gerekenler</h2>
+      <p style="color:var(--mut); font-size:14px; margin-top:9px;">Kira, depozito, komisyon, fesih… 10 kısa rehber, her biri 4 dakikada okunur.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(245px,1fr)); gap:13px; max-width:1060px; margin:0 auto;">
+      <a class="reh" href="/rehber/kira-zam-orani"><span class="n">01 · KİRA</span><h3>Kira Zam Oranı: "TÜFE'nin 3 Katı" Ne Demek?</h3><p>Yasal tavan, güncel oran ve hileli zam maddeleri.</p></a>
+      <a class="reh" href="/rehber/depozito-kac-ay"><span class="n">02 · KİRA</span><h3>Depozito Kaç Aylık Alınabilir?</h3><p>3 ay sınırı, nemalandırma ve iade kuralları.</p></a>
+      <a class="reh" href="/rehber/kira-fesih-ihbar-suresi"><span class="n">03 · KİRA</span><h3>Fesih İhbar Süresi: 1 Ay mı, 15 Gün mü?</h3><p>Yaygın yanılgı ve güvenli bildirim yolları.</p></a>
+      <a class="reh" href="/rehber/emlakci-komisyonu"><span class="n">04 · KİRA</span><h3>Emlakçı Komisyonu Yasal Oranı</h3><p>Kiralama ve satışta yasal sınır, kim ne kadar öder.</p></a>
+      <a class="reh" href="/rehber/otomatik-yenileme-maddesi"><span class="n">05 · KİRA</span><h3>Otomatik Yenileme Maddesi ve İptali</h3><p>"Uzadı, çıkamazsın" cümlesinin hukuki dayanağı.</p></a>
+      <a class="reh" href="/rehber/taksitli-alisveris-tuzaklari"><span class="n">06 · TÜKETİCİ</span><h3>Taksitli Alışverişte 5 Tuzak</h3><p>Vade farkı, ayıplı ürün ve cayma hakkı.</p></a>
+      <a class="reh" href="/rehber/is-sozlesmesi-rekabet-yasagi"><span class="n">07 · İŞ</span><h3>Rekabet Yasağı Geçerli mi? 2 Yıl Sınırı</h3><p>İş sözleşmesinde süre, bölge ve tazminat kuralları.</p></a>
+      <a class="reh" href="/rehber/ogrenci-ev-sozlesmesi"><span class="n">08 · ÖĞRENCİ</span><h3>Öğrenci Ev Sözleşmesinde 7 Madde</h3><p>İlk kez ev tutanlar için adım adım kontrol listesi.</p></a>
+      <a class="reh" href="/rehber/elle-yazilan-madde"><span class="n">09 · HUKUK</span><h3>Elle Yazılan Madde Geçerli mi?</h3><p>Matbu metinle çelişince hangisi üstün gelir?</p></a>
+      <a class="reh" href="/rehber/sozlesme-okuma-rehberi"><span class="n">10 · REHBER</span><h3>İmzalamadan Önce 10 Kontrol</h3><p>Tüm sözleşmeler için genel okuma rehberi.</p></a>
+    </div>
+  </section>
+
   <!-- 🔒 GİZLİLİK / KVKK -->
   <section id="gizlilik" style="margin-top:64px; max-width:760px; margin-left:auto; margin-right:auto;">
     <h2 style="font-size:20px; font-weight:900; text-align:center; margin-bottom:18px;">🔒 Gizlilik ve KVKK</h2>
@@ -654,6 +682,7 @@
   <footer style="margin-top:52px; padding-top:22px; border-top:1px solid var(--line); text-align:center; font-size:12px; color:var(--mut);">
     <div style="margin-bottom:12px; font-size:13px;">🔍 <b style="color:var(--txt);">Gizli Madde</b> — İmzalamadan önce gizli maddeleri gör.</div>
     <div style="display:flex; gap:18px; justify-content:center; flex-wrap:wrap;">
+      <a href="#rehber" style="color:var(--mut); text-decoration:none;">📚 Rehber</a>
       <a href="#gizlilik" style="color:var(--mut); text-decoration:none;">Gizlilik &amp; KVKK</a>
       <a href="#sss" style="color:var(--mut); text-decoration:none;">Sıkça Sorulanlar</a>
       <a href="#pricing" style="color:var(--mut); text-decoration:none;">Fiyatlandırma</a>

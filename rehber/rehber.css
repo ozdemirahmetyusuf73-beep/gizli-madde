@@ -1,0 +1,51 @@
+/* Gizli Madde — Rehber makaleleri ortak stili */
+:root{
+  --bg:#0b0d12; --card:#131722; --line:#232a3a; --txt:#e8ecf5; --mut:#8a93a8;
+  --red:#ff4d5e; --grn:#22d47f; --amb:#ffb020;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.78;-webkit-font-smoothing:antialiased}
+a{color:var(--red)}
+header.bar{position:sticky;top:0;z-index:5;background:rgba(11,13,18,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.bar .in{max-width:760px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:11px}
+header.bar img{width:32px;height:32px;border-radius:9px}
+header.bar b{font-weight:800;letter-spacing:-.3px;font-size:16px}
+header.bar .back{color:var(--mut);text-decoration:none;font-size:13px;margin-left:auto}
+header.bar .back:hover{color:var(--txt)}
+.wrap{max-width:760px;margin:0 auto;padding:26px 20px 72px}
+h1{font-size:31px;line-height:1.22;letter-spacing:-1.1px;margin:24px 0 14px}
+h2{font-size:21px;margin:36px 0 12px;letter-spacing:-.5px}
+h3{font-size:16.5px;margin:24px 0 8px}
+p{color:#c3cad9;font-size:15.5px;margin:0 0 15px}
+.lead{font-size:17px;color:var(--txt);margin-bottom:22px}
+strong{color:var(--txt)}
+ul,ol{color:#c3cad9;font-size:15.5px;padding-left:21px;margin:0 0 16px}
+li{margin-bottom:9px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:24px 0}
+.ozet{border-left:3px solid var(--red)}
+.ozet .t{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--red);font-weight:800;margin-bottom:9px}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14.5px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:#171c29;font-weight:700;color:var(--txt)}
+td{color:#c3cad9}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin-bottom:10px}
+details+details{margin-top:0}
+summary{cursor:pointer;font-weight:700;font-size:15px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸ ";color:var(--red)}
+details[open] summary::before{content:"▾ "}
+details p{margin:11px 0 2px;font-size:14.5px}
+.cta{background:linear-gradient(135deg,#1b1220,#131722);border:1px solid #3b2130;border-radius:16px;padding:24px;text-align:center;margin:38px 0 12px}
+.cta .t{font-size:24px;font-weight:900;letter-spacing:-.6px;margin:0 0 9px}
+.cta p{margin:0 0 17px;color:var(--mut);font-size:14.5px}
+.btn{display:inline-block;background:linear-gradient(135deg,#ff6b7a,#c8102e);color:#fff;
+  text-decoration:none;font-weight:800;padding:13px 27px;border-radius:12px;font-size:15px;box-shadow:0 6px 22px rgba(200,16,46,.28)}
+.btn:hover{filter:brightness(1.08)}
+.uyari{font-size:12.5px;color:var(--mut);border-top:1px solid var(--line);padding-top:18px;margin-top:38px;line-height:1.65}
+.oz{color:var(--mut);font-size:13px;margin-bottom:8px}
+.pill{display:inline-block;background:#171c29;border:1px solid var(--line);color:var(--mut);
+  border-radius:999px;padding:3px 11px;font-size:12px;margin:0 6px 6px 0}
+.rol{background:#0f1a14;border:1px solid #1d3a2a;color:#7fe0aa}
+@media(max-width:600px){h1{font-size:25px} h2{font-size:19px} .wrap{padding:18px 16px 56px} table{font-size:13.5px}}
